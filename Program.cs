@@ -137,19 +137,26 @@ namespace Queda_Livre
         }
         static void ImprimeLista(List<Passageiro> Voo)
         {
-            foreach (Passageiro reg in Voo)
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            if (Voo.Count == 0)
+            {
+                Console.WriteLine("Nenhum passageiro cadastrado neste voo.");
+            }
+            else
+            {
+                foreach (Passageiro reg in Voo)
                 {
-                    Console.Clear();
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
                     Console.Write("\n\t| CPF: " + reg.OCPF() + "\n");
                     Console.Write("\t| Nome: " + reg.ONome() + "\n");
                     Console.Write("\t| Endereço: " + reg.OEnd() + "\n");
                     Console.Write("\t| Telefone: " + reg.OTel() + "\n");
                     Console.Write("\t| Horario do Voo: " + reg.OHorario() + "\n");
                     Console.Write("\t| Poltrona: " + reg.OPoltrona() + "\n");
-                    Console.ResetColor();
                 }
+            }
+            Console.ResetColor();
          }
         static void SubMenu2()
         {
@@ -164,19 +171,26 @@ namespace Queda_Livre
 
         static void ImprimeFila(Queue<Passageiro> Voo)
         {
-            foreach (Passageiro reg in Voo)
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            if (Voo.Count == 0)
             {
-                Console.Clear();
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write("\n\t| CPF: " + reg.OCPF() + "\n");
-                Console.Write("\t| Nome: " + reg.ONome() + "\n");
-                Console.Write("\t| Endereço: " + reg.OEnd() + "\n");
-                Console.Write("\t| Telefone: " + reg.OTel() + "\n");
-                Console.Write("\t| Horario do Voo: " + reg.OHorario() + "\n");
-                Console.Write("\t| Poltrona: " + reg.OPoltrona() + "\n");
-                Console.ResetColor();
+                Console.WriteLine("A fila de espera está vazia.");
             }
+            else
+            {
+                foreach (Passageiro reg in Voo)
+                {
+                    Console.Write("\n\t| CPF: " + reg.OCPF() + "\n");
+                    Console.Write("\t| Nome: " + reg.ONome() + "\n");
+                    Console.Write("\t| Endereço: " + reg.OEnd() + "\n");
+                    Console.Write("\t| Telefone: " + reg.OTel() + "\n");
+                    Console.Write("\t| Horario do Voo: " + reg.OHorario() + "\n");
+                    Console.Write("\t| Poltrona: " + reg.OPoltrona() + "\n");
+                }
+            }
+            Console.ResetColor();
         }
         static void SubMenu3()
         {
@@ -193,23 +207,25 @@ namespace Queda_Livre
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
+            bool encontrado = false;
             foreach (Passageiro reg in Voo)
             {
                 if (reg.OCPF() == numero)
                 {
-                    foreach (Passageiro prd in Voo)
-                    {
-                        Console.Clear();
-                        Console.Write("\n\t| CPF: " + prd.OCPF() + "\n");
-                        Console.Write("\t| Nome: " + prd.ONome() + "\n");
-                        Console.Write("\t| Endereço: " + prd.OEnd() + "\n");
-                        Console.Write("\t| Telefone: " + prd.OTel() + "\n");
-                        Console.Write("\t| Horario do Voo: " + prd.OHorario() + "\n");
-                        Console.Write("\t| Poltrona: " + prd.OPoltrona() + "\n");
-                    }
+                    Console.Clear();
+                    Console.Write("\n\t| CPF: " + reg.OCPF() + "\n");
+                    Console.Write("\t| Nome: " + reg.ONome() + "\n");
+                    Console.Write("\t| Endereço: " + reg.OEnd() + "\n");
+                    Console.Write("\t| Telefone: " + reg.OTel() + "\n");
+                    Console.Write("\t| Horario do Voo: " + reg.OHorario() + "\n");
+                    Console.Write("\t| Poltrona: " + reg.OPoltrona() + "\n");
+                    encontrado = true;
+                    break;
                 }
-                else
-                    Console.WriteLine("O Passageiro não consta la lista!");
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine("O passageiro não consta na lista!");
             }
             Console.ResetColor();
         }
@@ -218,25 +234,61 @@ namespace Queda_Livre
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
+            bool encontrado = false;
             foreach (Passageiro reg in Voo)
             {
-                if (reg.ONome() == no)
+                if (reg.ONome().Equals(no, StringComparison.OrdinalIgnoreCase))
                 {
-                    foreach (Passageiro prd in Voo)
-                    {
-                        Console.Clear();
-                        Console.Write("\n\t| CPF: " + prd.OCPF() + "\n");
-                        Console.Write("\t| Nome: " + prd.ONome() + "\n");
-                        Console.Write("\t| Endereço: " + prd.OEnd() + "\n");
-                        Console.Write("\t| Telefone: " + prd.OTel() + "\n");
-                        Console.Write("\t| Horario do Voo: " + prd.OHorario() + "\n");
-                        Console.Write("\t| Poltrona: " + prd.OPoltrona() + "\n");
-                    }
+                    Console.Clear();
+                    Console.Write("\n\t| CPF: " + reg.OCPF() + "\n");
+                    Console.Write("\t| Nome: " + reg.ONome() + "\n");
+                    Console.Write("\t| Endereço: " + reg.OEnd() + "\n");
+                    Console.Write("\t| Telefone: " + reg.OTel() + "\n");
+                    Console.Write("\t| Horario do Voo: " + reg.OHorario() + "\n");
+                    Console.Write("\t| Poltrona: " + reg.OPoltrona() + "\n");
+                    encontrado = true;
+                    break;
                 }
-                else
-                    Console.WriteLine("O Passageiro nço consta la lista!");
+            }
+            if (!encontrado)
+            {
+                Console.WriteLine("O passageiro não consta na lista!");
             }
             Console.ResetColor();
+        }
+
+        static void ExcluirPassageiro(List<Passageiro> Voo, Queue<Passageiro> Fila)
+        {
+            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Digite o numero do CPF a ser excluído:");
+            Console.ResetColor();
+            string cpf = Console.ReadLine();
+            Passageiro encontrado = null;
+            foreach (Passageiro p in Voo)
+            {
+                if (p.OCPF() == cpf)
+                {
+                    encontrado = p;
+                    break;
+                }
+            }
+            if (encontrado != null)
+            {
+                Voo.Remove(encontrado);
+                Console.WriteLine("Passageiro removido com sucesso.");
+                if (Fila.Count > 0)
+                {
+                    Passageiro promovido = Fila.Dequeue();
+                    Voo.Add(promovido);
+                    Console.WriteLine("Um passageiro da fila de espera foi promovido para o voo.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Passageiro não encontrado neste voo.");
+            }
         }
 
 
@@ -386,7 +438,53 @@ namespace Queda_Livre
                         {
                             Cadastra(Voo2);
                         }
+                    else if (opcao == '3')
+                        {
+                            Cadastra(Voo3);
+                        }
+                    else if (teclado.Key == ConsoleKey.Escape)
+                        {
+                            // volta ao menu
+                        }
                    Console.ResetColor();
+                }
+                else if (opcao == '5') // excluir passageiro
+                {
+                    SubMenu3();
+                    teclado = Console.ReadKey();
+                    opcao = Convert.ToChar(teclado.KeyChar);
+                    if (opcao == '1')
+                    {
+                        ExcluirPassageiro(Voo1, FilaEsperaV1);
+                    }
+                    else if (opcao == '2')
+                    {
+                        ExcluirPassageiro(Voo2, FilaEsperaV2);
+                    }
+                    else if (opcao == '3')
+                    {
+                        ExcluirPassageiro(Voo3, FilaEsperaV3);
+                    }
+                    Console.ReadKey();
+                }
+                else if (opcao == '6') // consultar lista de espera
+                {
+                    SubMenu3();
+                    teclado = Console.ReadKey();
+                    opcao = Convert.ToChar(teclado.KeyChar);
+                    if (opcao == '1')
+                    {
+                        ImprimeFila(FilaEsperaV1);
+                    }
+                    else if (opcao == '2')
+                    {
+                        ImprimeFila(FilaEsperaV2);
+                    }
+                    else if (opcao == '3')
+                    {
+                        ImprimeFila(FilaEsperaV3);
+                    }
+                    Console.ReadKey();
                 }
                 Console.Clear();
             }//fim do menu
